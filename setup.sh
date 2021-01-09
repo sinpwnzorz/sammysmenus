@@ -1,24 +1,24 @@
 #!/bin/bash
+#
+# Run this setup.sh for one time deployment of the menus on the primary raspberry pi, run alternative setup methods on all clients
+#
+
 echo "Running preinstall update..."
 sudo apt-get update -qq && sudo apt-get upgrade -qq -y && sudo apt autoremove -qq -y
-echo "Equipping AH-64 Apache2"
+echo "Installing Apache and unclutter"
 sudo apt install apache2 -qq -y
-echo "Enabling Thermoptic mouse camouflage..."
-sudo apt-get install unclutter
+sudo apt-get install unclutter -qq -y
 echo -n "Webserver deployed at: http://" && hostname -I
-echo "Deploying Database Tractorbeam..."
-if [ -d /home/pi/sammys ]
-then
-    rm -rf /home/pi/sammys
-fi
-mkdir /home/pi/sammys
-wget -q --no-check-certificate 'https://docs.google.com/uc?export=download&id=1dWJbYRuWk1dkz1K3hfIDIyIxaP3xUETF' -O /home/pi/sammys/sammys.zip
-echo "Decoupling High Priority Payload..."
-unzip -q -o /home/pi/sammys/sammys.zip -d /var/www/html/
-echo "Annihilating legacy architecture..."
+mkdir /home/pi/sammysmenus
+git clone https://github.com/sinpwnzorz/sammysmenus.git
+mv /home/pi/sammysmenus/index.html /var/www/html/index.html
+mv /home/pi/sammysmenus/page2.html /var/www/html/page2.html
+mv /home/pi/sammysmenus/page3.html /var/www/html/page3.html
+mv /home/pi/sammysmenus/style.css /var/www/html/style.css
+mv /home/pi/sammysmenus/SammysBackground.jpg /var/www/html/SammysBackground.jpg
+mv /home/pi/sammysmenus/SammysLogo.png /var/www/html/SammysLogo.png
 rm -rf /home/pi/.config/*lxsession
 mkdir -p /home/pi/.config/.lxsession/LXDE-pi
-echo "Compiling autonomouns visualization..."
 cat > /home/pi/.config/.lxsession/LXDE-pi/autostart <<EOF
 @xset s off
 @xset -dpms
@@ -36,8 +36,8 @@ while true; do
         * ) echo "Please answer yes or no.";;
     esac
 done
-echo "Deploying triple-display matrix..."
+echo "Deploying triple-display webserver..."
 mv /home/pi/.config/.lxsession/ /home/pi/.config/lxsession/
 echo "Rebooting..."
-sleep 1
+sleep 2
 reboot
