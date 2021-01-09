@@ -1,0 +1,69 @@
+body {
+	font-weight: bold;
+	background-image: url("SammysBackground.jpg");
+	height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+table {
+	border: 0px;
+	border-collapse: collapse;
+}
+
+#title {
+	color: black;
+	text-align: center;
+	font-family: wtf;
+	font-weight: bold;
+}
+
+h1 {
+	margin: 0;
+}
+
+#titleinfo {
+	color: black;
+	text-align: center;
+	font-weight: bold;
+}
+
+#price {
+	text-align: right;
+	color: black;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+#item {
+	color: red;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+#iteminfo {
+	color: black;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+#content {
+	padding: 10px;
+}
+
+#leftcol {
+	float: left;
+	width: 930px;
+}
+
+#rightcol {
+	float: right;
+	width: 930px;
+}
+
+#pizzasize {
+	text-align: right;
+	color: red;
+	font-weight: bold;
+}
+
