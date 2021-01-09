@@ -1,6 +1,8 @@
 #!/bin/bash
 #
-# Run this setup.sh for one time deployment of the menus on the primary raspberry pi, run alternative setup methods on all clients
+# Run this setup.sh for one time deployment of the menus on the primary raspberry pi, use the following on the other two screens
+#wget http://sammysmenu/setup2.sh && ./setup2.sh
+#wget http://sammysmenu/setup3.sh && ./setup3.sh
 #
 
 echo "Running preinstall update..."
@@ -8,15 +10,15 @@ sudo apt-get update -qq && sudo apt-get upgrade -qq -y && sudo apt autoremove -q
 echo "Installing Apache and unclutter"
 sudo apt install apache2 -qq -y
 sudo apt-get install unclutter -qq -y
+echo $(hostname -I)" sammysmenus" >> /etc/hosts
+echo '127.0.0.1 sammysmenus' >> /etc/hosts
+echo 'sammysmenus' >> /etc/hostname
 echo -n "Webserver deployed at: http://" && hostname -I
+echo -n "Also available at: http://" && hostname
 mkdir /home/pi/sammysmenus
 git clone https://github.com/sinpwnzorz/sammysmenus.git
-mv /home/pi/sammysmenus/index.html /var/www/html/index.html
-mv /home/pi/sammysmenus/page2.html /var/www/html/page2.html
-mv /home/pi/sammysmenus/page3.html /var/www/html/page3.html
-mv /home/pi/sammysmenus/style.css /var/www/html/style.css
-mv /home/pi/sammysmenus/SammysBackground.jpg /var/www/html/SammysBackground.jpg
-mv /home/pi/sammysmenus/SammysLogo.png /var/www/html/SammysLogo.png
+cd /home/pi/sammysmenus
+mv setup2.sh setup3.sh index.html page2.html page3.html style.css SammysBackground.jpg SammysLogo.png /var/www/html/
 rm -rf /home/pi/.config/*lxsession
 mkdir -p /home/pi/.config/.lxsession/LXDE-pi
 cat > /home/pi/.config/.lxsession/LXDE-pi/autostart <<EOF
