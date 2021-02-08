@@ -8,7 +8,7 @@ Install Menu pages for Sammy's 3 monitor display for Raspberry Pi OS
 
 ## Clone this repo
 ```
-cd /home/pi && git clone https://github.com/sinpwnzorz/sammysmenus.git
+sudo apt install git -y && cd /home/pi && git clone https://github.com/sinpwnzorz/sammysmenus.git
 ```
 
 ## Setting up the first Pi
