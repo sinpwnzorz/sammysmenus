@@ -1,6 +1,7 @@
 #/!bin/bash
-sudo apt-get install unclutter -y
-mkdir -p /home/pi/.config/lxsession/LXDE-pi
+sudo apt install unclutter -y
+sudo apt install chromium -y
+mkdir -p /home/pi/.config/lxsession/LXDE-pi/
 cat > /home/pi/.config/lxsession/LXDE-pi/autostart <<EOF
 @xset s off
 @xset -dpms
